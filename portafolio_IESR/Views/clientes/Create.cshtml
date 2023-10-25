@@ -1,0 +1,72 @@
+﻿@model portafolio_IESR.Models.ClienteModel
+
+@{
+    ViewData["Title"] = "Crear Cliente";
+}
+
+<style>
+    /* Estilo para el fondo de la página */
+    body {
+        background-color: #1c1c1c;
+    }
+
+    /* Estilos para el formulario de edición */
+    form {
+        background-color: #1c1c1c;
+        border: 1px solid white;
+        color: white;
+        padding: 20px;
+    }
+
+    /* Estilos para las etiquetas de formulario */
+    .control-label {
+        color: white;
+    }
+
+    /* Estilos para campos de formulario */
+    .form-control {
+        background-color: #1c1c1c;
+        border: 1px solid white;
+        color: white;
+    }
+
+    /* Estilos para los botones */
+    .btn-primary {
+        background-color: white;
+        color: #1c1c1c;
+        border: 1px solid white;
+    }
+</style>
+
+<h2 style="color:white">Solicitar al Ivan</h2>
+
+@using (Html.BeginForm("Create", "Clientes", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NombreEmpresa, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.NombreEmpresa, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.NombreEmpresa, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NumeroTelefono, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.NumeroTelefono, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.NumeroTelefono, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a la lista", "Index", "Clientes")
+</div>

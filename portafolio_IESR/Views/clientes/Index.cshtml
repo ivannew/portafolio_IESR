@@ -1,0 +1,71 @@
+﻿@model List<portafolio_IESR.Models.ClienteModel>
+
+@{
+    ViewBag.Title = "Lista de Clientes";
+}
+
+<style>
+    /* Estilo para el fondo de la página */
+    body {
+        background-color: #1c1c1c;
+    }
+
+    /* Estilos para la tabla */
+    table {
+        background-color: white;
+        border: 1px solid white;
+        color: white;
+    }
+
+    /* Estilos para las celdas de la tabla */
+    th, td {
+        border: 1px solid white;
+    }
+
+    /* Estilos para las etiquetas de formulario */
+    .form-label {
+        color: white;
+    }
+
+    /* Estilos para campos de formulario */
+    .form-field {
+        background-color: #1c1c1c;
+        border: 1px solid white;
+        color: white;
+    }
+    .h2
+    {
+        color: white;
+    }
+</style>
+
+<h2 style="color:white">Solicitar</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre Empresa</th>
+            <th>Número de Teléfono</th>
+            <th>Correo</th>
+            <th>Acciones</th> <!-- Nueva columna para acciones -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.NombreEmpresa</td>
+                <td>@cliente.NumeroTelefono</td>
+                <td>@cliente.Correo</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = cliente.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Eliminar", "Delete", new { id = cliente.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a href="@Url.Action("Create", "Clientes")" class="btn btn-success">Solicitar</a>
+</div>
